@@ -1,4 +1,5 @@
-const API_URL = "https://pagina-web-finansas-b6474cfcee14.herokuapp.com/api/auth/login/";
+const API_BASE = window.API_BASE || "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
+const API_URL = `${API_BASE}/api/auth/login/`;
 const form = document.getElementById("loginForm");
 const messageDiv = document.getElementById("message");
 

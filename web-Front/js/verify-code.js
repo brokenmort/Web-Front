@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "https://pagina-web-finansas-b6474cfcee14.herokuapp.com/api/auth/password-verify/";
+  const API_BASE = window.API_BASE || "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
+  const API_URL = `${API_BASE}/api/auth/password-verify/`;
   const form = document.getElementById("verifyForm");
   const messageDiv = document.getElementById("message");
 

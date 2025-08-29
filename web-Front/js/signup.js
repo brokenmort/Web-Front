@@ -30,7 +30,8 @@ document.getElementById("signup-btn").addEventListener("click", async function (
     if (lastName) formData.append('last_name', lastName);
 
     try {
-        const response = await fetch("https://pagina-web-finansas-b6474cfcee14.herokuapp.com/api/auth/register/", {
+        const API_BASE = window.API_BASE || "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
+        const response = await fetch(`${API_BASE}/api/auth/register/`, {
             method: "POST",
             // No establecemos Content-Type manualmente; el navegador añadirá multipart/form-data con boundary
             body: formData

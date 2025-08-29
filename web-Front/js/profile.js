@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE = "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
+  const API_BASE = window.API_BASE || "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
   const token = sessionStorage.getItem("authToken");
   if (!token) return window.location.href = "index.html";
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cargar datos del perfil
   const loadProfile = async () => {
     try {
-      const res = await fetch("https://pagina-web-finansas-b6474cfcee14.herokuapp.com/api/auth/me/", {
+      const res = await fetch(`${API_BASE}/api/auth/me/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(profileImageFile) formData.append('profile_image', profileImageFile);
 
     try {
-      const res = await fetch("https://pagina-web-finansas-b6474cfcee14.herokuapp.com/api/auth/me/", {
+      const res = await fetch(`${API_BASE}/api/auth/me/`, {
         method: "PUT",
         headers: {"Authorization":"Bearer "+token},
         body: formData

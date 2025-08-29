@@ -1,4 +1,5 @@
-const API_URL = "https://pagina-web-finansas-b6474cfcee14.herokuapp.com/api/auth/password-reset/";
+const API_BASE = window.API_BASE || "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
+const API_URL = `${API_BASE}/api/auth/password-reset/`;
 const form = document.getElementById("resetForm");
 const messageDiv = document.getElementById("message");
 

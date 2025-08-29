@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // GET /me con Bearer
-  fetch("https://pagina-web-finansas-b6474cfcee14.herokuapp.com/api/auth/me/", {
+  const API_BASE = window.API_BASE || "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
+  fetch(`${API_BASE}/api/auth/me/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
