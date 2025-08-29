@@ -4,7 +4,8 @@
 // - Supports override via query (?api=...) or localStorage (apiBaseOverride)
 (function () {
   const DEFAULT_HEROKU = "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
-  const DEFAULT_RENDER_API = "https://<your-backend-render>.onrender.com"; // TODO: set if you have backend on Render
+  // Use Heroku as the default even when running on Render (no backend Render yet)
+  const DEFAULT_RENDER_API = "https://pagina-web-finansas-b6474cfcee14.herokuapp.com";
 
   // Read override from query or localStorage
   const params = new URLSearchParams(window.location.search);
@@ -27,9 +28,8 @@
   if (!apiBase) {
     const host = window.location.hostname;
     if (host.endsWith("onrender.com")) {
-      // Frontend on Render: try your Render backend first, else fallback to Heroku
-      const maybeRender = /<your-backend-render>/.test(DEFAULT_RENDER_API) ? null : DEFAULT_RENDER_API;
-      apiBase = normalize(maybeRender) || normalize(DEFAULT_HEROKU);
+      // Frontend on Render: use configured backend (currently Heroku)
+      apiBase = normalize(DEFAULT_RENDER_API) || normalize(DEFAULT_HEROKU);
     } else if (host === "localhost" || host === "127.0.0.1") {
       // Local Live Server: keep Heroku by default
       apiBase = normalize(DEFAULT_HEROKU);
