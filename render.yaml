@@ -1,5 +1,10 @@
-services:
+﻿services:
   - type: static
     name: web-front
+    env: static
     staticPublishPath: web-Front
     buildCommand: ""
+    routes:
+      - type: rewrite
+        source: "/**"
+        destination: "/index.html"
