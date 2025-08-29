@@ -28,7 +28,8 @@
     const host = window.location.hostname;
     if (host.endsWith("onrender.com")) {
       // Frontend on Render: try your Render backend first, else fallback to Heroku
-      apiBase = normalize(DEFAULT_RENDER_API) || normalize(DEFAULT_HEROKU);
+      const maybeRender = /<your-backend-render>/.test(DEFAULT_RENDER_API) ? null : DEFAULT_RENDER_API;
+      apiBase = normalize(maybeRender) || normalize(DEFAULT_HEROKU);
     } else if (host === "localhost" || host === "127.0.0.1") {
       // Local Live Server: keep Heroku by default
       apiBase = normalize(DEFAULT_HEROKU);
